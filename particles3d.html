@@ -8,6 +8,7 @@
 <script type="text/javascript" src = "ggslac/jslibs/gl-matrix-min.js"></script>
 <script type="text/javascript" src="ggslac/jslibs/webgl-utils.js"></script>
 <script type="text/javascript" src="ggslac/jslibs/webgl-debug.js"></script>
+<script type="text/javascript" src="ggslac/jslibs/jquery-3.5.1.min.js"></script>
 
 <!--Our Scripts!-->
 <script src="ggslac/geometry/polymesh.js"></script>
@@ -16,13 +17,10 @@
 <script src="ggslac/geometry/cameras3d.js"></script>
 <script src="ggslac/shaders/shaders.js"></script>
 <script src="ggslac/utils/simpledraw.js"></script>
-<script src="ggslac/utils/blockloader.js"></script>
 <script src="ggslac/viewers/basecanvas.js"></script>
 <script src="ggslac/viewers/scenecanvas.js"></script>
 
 <script src="Particles3D.js"></script>
-
-<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -58,22 +56,21 @@
 <script>
     let glcanvas = document.getElementById("GLCanvas1");
     glcanvas.addEventListener("contextmenu", function(e){ e.stopPropagation(); e.preventDefault(); return false; }); //Need this to disable the menu that pops up on right clicking
-    SceneCanvas(glcanvas, "ggslac/shaders/", "ggslac/meshes/");
-    glcanvas.repaintOnInteract = false;
+    let sceneCanvas = new SceneCanvas(glcanvas, "ggslac/shaders/", "ggslac/meshes/");
+    sceneCanvas.repaintOnInteract = false;
 
 
     // Load the sample scene as a default
     particles = new Particles();
     particles.randomlyInitSpheres(20);
-    console.log(particles.spheres);
-    glcanvas.setupScene(particles.scene, glcanvas.clientWidth, glcanvas.clientHeight);
-    glcanvas.drawEdges = false;
-    glcanvas.updateMeshDrawings();
+    sceneCanvas.setupScene(particles.scene, glcanvas.clientWidth, glcanvas.clientHeight);
+    sceneCanvas.drawEdges = false;
+    sceneCanvas.updateMeshDrawings();
 
     function repaint() {
-        particles.animate();
-        glcanvas.repaint();
-        requestAnimationFrame(repaint);
+        particles.animate(); // Apply physics
+        sceneCanvas.repaint(); // Update rendering
+        requestAnimationFrame(repaint); // Repeat animation
     }
 
     requestAnimFrame(repaint);
