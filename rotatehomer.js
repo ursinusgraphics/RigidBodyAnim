@@ -1,15 +1,14 @@
 function animate() {
     // Keep track of elapsed time
     let time = (new Date()).getTime();
-    let dt = (lastTime - time)/1000;
+    let dt = (time - lastTime)/1000;
     lastTime = time;
     angle += dt;
 
     const scene = canvas.scene;
     for (let i = 0; i < scene.children.length; i++) {
-        if ("name" in scene.children[i] && scene.children[i].name == "homer") {
-            let c = scene.children[i];
-        }
+        // TODO: Find homer and update his transformation to rotate him by angle
+        // on top of the red cylinder
     }
     requestAnimFrame(canvas.repaint.bind(canvas));
     requestAnimFrame(animate);
