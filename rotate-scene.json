@@ -1,0 +1,163 @@
+{
+    "name":"Axis Angle Scene",
+    "materials":{
+        "green":{
+            "ka":[0.05, 0.05, 0.05],
+            "kd":[0.0, 1.0, 0.0],
+            "ks":[0.8, 0.0, 0.0]
+        },
+        "redambient":{
+            "ka":[1.0, 0.0, 0.0]
+        },
+        "blueambient":{
+            "ka":[0.0, 0.0, 1.0]
+        },
+        "greenambient":{
+            "ka":[0.0, 1.0, 0.0]
+        },
+        "grayambient":{
+            "ka":[0.5, 0.5, 0.5]
+        },
+        "purpleambient":{
+            "ka":[0.58, 0.404, 0.741]
+        },
+        "orangeambient":{
+            "ka":[1, 0.498, 0.0055]
+        },
+        "cyanambient":{
+            "ka":[0.09, 0.745, 0.812]
+        }
+    },
+
+    "lights":[
+        {
+            "pos":[4.27,21.13,10.02],
+            "color":[1, 1, 1]
+        },
+        {
+            "pos":[-8, 2, -3],
+            "color":[1, 1, 1]
+        }
+    ],
+    
+    "cameras":[
+        {
+            "pos": [-1.76,5.48,9.07],
+            "rot": [0.17,0.36,0.07,0.91],
+            "fovy": 1.0
+        }
+    ],
+    
+    "children":[
+
+        {
+            "shapes":[
+                {
+                    "type":"cylinder",
+                    "material":"greenambient",
+                    "radius":0.02,
+                    "center":[0, 10, 0],
+                    "height":20
+                }
+            ]
+        },
+
+        {
+            "transform":[0, 1, 0, 0,
+                        1, 0, 0, 0,
+                        0, 0, 1, 0,
+                        0, 0, 0, 1],
+
+            "shapes":[
+                {
+                    "type":"cylinder",
+                    "material":"redambient",
+                    "radius":0.02,
+                    "center":[0, 10, 0],
+                    "height":20
+                }
+            ]
+        },
+        
+        {
+            "transform":[1, 0, 0, 0,
+                        0, 0, 1, 0,
+                        0, 1, 0, 0,
+                        0, 0, 0, 1],
+
+            "shapes":[
+                {
+                    "type":"cylinder",
+                    "material":"blueambient",
+                    "radius":0.02,
+                    "center":[0, 10, 0],
+                    "height":20
+                }
+            ]
+        },
+
+        {
+            "name":"v",
+            "shapes":[
+                {
+                    "type":"cylinder",
+                    "material":"orangeambient",
+                    "radius":0.02,
+                    "center":[0, 0.5, 0],
+                    "height":1
+                }
+            ]
+        },
+
+        {
+            "name":"vrot",
+            "shapes":[
+                {
+                    "type":"cylinder",
+                    "material":"cyanambient",
+                    "radius":0.02,
+                    "center":[0, 0.5, 0],
+                    "height":1
+                }
+            ]
+        },
+
+        {
+            "name":"axis"
+        },        
+
+        {            
+            "name":"rotroot",
+            "transform":[1, 0, 0, 0,
+                        0, 1, 0, 0,
+                        0, 0, 1, 0,
+                        0, 0, 0, 1],
+            "children":[
+                {
+
+                    "transform":[1, 0, 0, 0,
+                                0, 1, 0, 0,
+                                0, 0, 1, 0,
+                                0, 0, 0, 1],
+                    "children":[
+                        {
+                            "transform":[0.003, 0, 0, 0.2,
+                                        0, 0.003, 0, -0.2,
+                                        0, 0, 0.003, 3,
+                                        0, 0, 0, 1],
+                            "shapes":[
+                                {
+                                "type":"mesh",
+                                "filename":"ggslac/meshes/proftralie.off"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+
+        }
+
+        
+    ]
+}
